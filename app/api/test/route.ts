@@ -3,6 +3,7 @@ import type { ServerRuntime } from "next";
 import { NextResponse } from "next/server";
 
 export const runtime: ServerRuntime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export const GET = async (req: Request) => {
   try {
