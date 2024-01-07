@@ -1,7 +1,11 @@
 import { Processor } from "@/lib/engine/processor";
 import { safeAsync } from "@/lib/utils/safe";
+import { ServerRuntime } from "next";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+
+export const runtime: ServerRuntime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const bodySchema = z.object({
   workflowRuntimeId: z.string(),
@@ -24,8 +28,7 @@ export const POST = async (req: Request) => {
   }
 
   const [authType, authValue] = authHeader.split(" ");
-  console.log(authValue);
-  console.log(apiKey);
+
   if (authValue !== apiKey) {
     return NextResponse.json(
       {

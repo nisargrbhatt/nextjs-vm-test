@@ -1,7 +1,11 @@
 import { prismadb } from "@/lib/utils/prisma";
 import { safeAsync } from "@/lib/utils/safe";
+import { ServerRuntime } from "next";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+
+export const runtime: ServerRuntime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const bodySchema = z.object({
   key: z.string(),

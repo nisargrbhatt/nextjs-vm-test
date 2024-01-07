@@ -3,8 +3,12 @@ import { Task, TaskStatus, TaskType } from "@/lib/engine/tasks";
 import { prismadb } from "@/lib/utils/prisma";
 import { safeAsync } from "@/lib/utils/safe";
 import { RuntimeStatus } from "@prisma/client";
+import { ServerRuntime } from "next";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+
+export const runtime: ServerRuntime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const bodySchema = z.object({
   workflowDefinitionId: z.string(),
