@@ -24,7 +24,8 @@ export const POST = async (req: Request) => {
   }
 
   const [authType, authValue] = authHeader.split(" ");
-
+  console.log(authValue);
+  console.log(apiKey);
   if (authValue !== apiKey) {
     return NextResponse.json(
       {

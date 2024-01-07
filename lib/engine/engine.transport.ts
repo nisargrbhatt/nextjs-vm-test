@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 const SELF_URL = process.env?.VERCEL_URL
   ? `https://${process.env?.VERCEL_URL}`
@@ -22,7 +22,11 @@ export class EngineTransport {
         Authorization: `Basic ${apiKey}`,
       },
     }).catch((error) => {
-      console.error(error);
+      if (error instanceof AxiosError) {
+        console.error(error.response?.data);
+      } else {
+        console.error(error);
+      }
     });
   }
 }
